@@ -1,0 +1,41 @@
+buildscript {
+	ext {
+		springBootVersion = '2.3.1.RELEASE'
+	}
+	repositories {
+	
+		mavenCentral()
+		flatDir {
+			dirs 'lib'
+		}
+	}
+	dependencies {
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse'
+
+group = 'bnkcapital'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile fileTree(dir:'lib', include: ['**/*.jar'])
+}
+
+test {
+	exclude '**/*'
+	//useJUnitPlatform()
+}
